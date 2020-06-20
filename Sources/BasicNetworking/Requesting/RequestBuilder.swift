@@ -18,12 +18,11 @@ public enum HTTPMethod: String {
 public protocol RequestBuilder {
     
     var method: HTTPMethod { get }
-    var baseURL: URL { get }
     var path: String { get }
     var params: [URLQueryItem]? { get }
     var headers: [String: String] { get }
 
-    func toURLRequest() -> URLRequest
+    func toURLRequest(baseURL: URL) -> URLRequest
     
     func encodeRequestBody() -> Data?
     
@@ -33,7 +32,7 @@ public extension RequestBuilder {
     
     func encodeRequestBody() -> Data? { nil }
     
-    func toURLRequest() -> URLRequest {
+    func toURLRequest(baseURL: URL) -> URLRequest {
         
         var components = URLComponents(url: baseURL.appendingPathComponent(path),
                                        resolvingAgainstBaseURL: false)!
@@ -42,6 +41,8 @@ public extension RequestBuilder {
 
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = headers
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue(Bundle.main.preferredLocalizations.first ?? "en", forHTTPHeaderField: "Accept-Language")
         request.httpMethod = method.rawValue.uppercased()
 
         request.httpBody = encodeRequestBody()

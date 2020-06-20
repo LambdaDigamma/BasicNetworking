@@ -50,3 +50,7 @@ extension Array: Model where Element: Model {
     }
     
 }
+
+// A type that represents no model value is present
+public struct Empty: Model {
+}

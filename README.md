@@ -11,7 +11,9 @@
 ## Features
 
 - [x] Basic Requests (GET, POST, PUT, DELETE)
-- [x] Authorization via Passport
+- [ ] Authorization with Laravel Passport
+- [ ] Authorization with Laravel Sanctum
+- [ ] Support for Laravel API Paging 
 
 ## Requirements
 

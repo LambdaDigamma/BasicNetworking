@@ -10,22 +10,20 @@ import Foundation
 struct PostRequestBuilder<Body: Model>: RequestBuilder {
     
     var method: HTTPMethod
-    var baseURL: URL
     var path: String
     var params: [URLQueryItem]?
     var headers: [String : String] = [:]
     var body: Body?
     
     init(method: HTTPMethod = .post,
-         baseURL: URL,
          path: String,
          params: [URLQueryItem]? = nil,
          body: Body? = nil) {
         self.method = method
-        self.baseURL = baseURL
         self.path = path
         self.params = params
         self.body = body
+        self.headers["Content-Type"] = "application/json; charset=utf-8"
     }
     
     func encodeRequestBody() -> Data? {

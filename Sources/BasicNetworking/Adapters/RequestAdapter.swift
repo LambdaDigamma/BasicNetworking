@@ -12,6 +12,7 @@ public protocol RequestAdapter {
     func beforeSend(_ request: URLRequest)
     func onResponse(response: URLResponse?, data: Data?)
     func onError(request: URLRequest, error: NetworkingError)
+    func onSuccess(request: URLRequest)
 }
 
 public extension RequestAdapter {
