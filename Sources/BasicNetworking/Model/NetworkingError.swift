@@ -21,7 +21,7 @@ public enum NetworkingError: Error {
 
 extension NetworkingError {
     
-    static func error(from response: URLResponse?) -> NetworkingError? {
+    public static func error(from response: URLResponse?) -> NetworkingError? {
         
         guard let http = response as? HTTPURLResponse else {
             return .unknownResponse

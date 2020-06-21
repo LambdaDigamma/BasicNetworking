@@ -18,6 +18,7 @@ public enum HTTPMethod: String {
 public protocol RequestBuilder {
     
     var method: HTTPMethod { get }
+    var prefix: PathPrefix? { get }
     var path: String { get }
     var params: [URLQueryItem]? { get }
     var headers: [String: String] { get }
@@ -34,7 +35,7 @@ public extension RequestBuilder {
     
     func toURLRequest(baseURL: URL) -> URLRequest {
         
-        var components = URLComponents(url: baseURL.appendingPathComponent(path),
+        var components = URLComponents(url: baseURL.appendingPathComponent(prefix ?? "").appendingPathComponent(path),
                                        resolvingAgainstBaseURL: false)!
         components.queryItems = params
         let url = components.url!

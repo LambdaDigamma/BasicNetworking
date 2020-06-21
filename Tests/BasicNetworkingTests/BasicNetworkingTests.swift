@@ -5,7 +5,7 @@ final class BasicNetworkingTests: XCTestCase {
     
     
 
-    static var allTests = [
+//    static var allTests = [
 //        ("testExample", testExample),
-    ]
+//    ]
 }

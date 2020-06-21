@@ -10,6 +10,7 @@ import Foundation
 struct PostRequestBuilder<Body: Model>: RequestBuilder {
     
     var method: HTTPMethod
+    var prefix: PathPrefix? = nil
     var path: String
     var params: [URLQueryItem]?
     var headers: [String : String] = [:]

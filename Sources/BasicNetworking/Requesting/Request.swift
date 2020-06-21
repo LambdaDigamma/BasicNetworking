@@ -9,8 +9,8 @@ import Foundation
 
 public struct Request {
     
-    let builder: RequestBuilder
-    let completion: (Result<Data, NetworkingError>) -> Void
+    public let builder: RequestBuilder
+    public let completion: (Result<Data, NetworkingError>) -> Void
 
     init(builder: RequestBuilder, completion: @escaping (Result<Data, NetworkingError>) -> Void) {
         self.builder = builder
@@ -18,6 +18,7 @@ public struct Request {
     }
     
     public static func basic(method: HTTPMethod = .get,
+                             prefix: PathPrefix? = nil,
                              path: String,
                              params: [URLQueryItem]? = nil,
                              completion: @escaping (Result<Data, NetworkingError>) -> Void) -> Request {
@@ -28,6 +29,7 @@ public struct Request {
     }
     
     public static func post<Body: Model>(method: HTTPMethod = .post,
+                                         prefix: PathPrefix? = nil,
                                          path: String,
                                          params: [URLQueryItem]? = nil,
                                          body: Body?,

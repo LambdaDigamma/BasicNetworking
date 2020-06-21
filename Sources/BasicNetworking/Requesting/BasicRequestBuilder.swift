@@ -11,6 +11,7 @@ import Foundation
 struct BasicRequestBuilder: RequestBuilder {
     
     var method: HTTPMethod
+    var prefix: PathPrefix? = nil
     var path: String
     var params: [URLQueryItem]?
     var headers: [String : String] = [:]
