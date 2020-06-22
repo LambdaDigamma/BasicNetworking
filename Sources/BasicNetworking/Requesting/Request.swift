@@ -23,7 +23,7 @@ public struct Request {
                              params: [URLQueryItem]? = nil,
                              completion: @escaping (Result<Data, NetworkingError>) -> Void) -> Request {
         
-        let builder = BasicRequestBuilder(method: method, path: path, params: params)
+        let builder = BasicRequestBuilder(method: method, prefix: prefix, path: path, params: params)
         return Request(builder: builder, completion: completion)
         
     }
@@ -35,7 +35,7 @@ public struct Request {
                                          body: Body?,
                                          completion: @escaping (Result<Data, NetworkingError>) -> Void) -> Request {
         
-        let builder = PostRequestBuilder(method: method, path: path, params: params, body: body)
+        let builder = PostRequestBuilder(method: method, prefix: prefix, path: path, params: params, body: body)
         return Request(builder: builder, completion: completion)
         
     }

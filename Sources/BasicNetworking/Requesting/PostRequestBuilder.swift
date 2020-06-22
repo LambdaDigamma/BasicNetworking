@@ -17,6 +17,7 @@ struct PostRequestBuilder<Body: Model>: RequestBuilder {
     var body: Body?
     
     init(method: HTTPMethod = .post,
+         prefix: PathPrefix? = nil,
          path: String,
          params: [URLQueryItem]? = nil,
          body: Body? = nil) {
